@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        name="description"
+        content="Generate a dynamic chessboard and visualize bishop moves."
+    >
+
+    <title>Bishop Chessboard Visualizer</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+    <main class="app">
+
+        <!-- header -->
+        <header class="header">
+            <div class="logo">
+                ♗
+            </div>
+            <div class="header-content">
+                <h1 class="title">
+                    Bishop Chessboard Visualizer
+                </h1>
+                <p class="description">
+                    Generate an N × N chessboard and explore all possible bishop
+                    moves.
+                </p>
+            </div>
+        </header>
+
+        <!-- controls -->
+        <section class="controls">
+            <div class="board-size">
+                <label for="board-size-input">
+                    Board Size
+                </label>
+                <input
+                    type="number"
+                    id="board-size-input"
+                    value="8"
+                    min="4"
+                    max="12"
+                >
+            </div>
+
+            <button type="button" id="generate-board">
+                Generate Board
+            </button>
+            <button type="button" id="reset-board">
+                Reset
+            </button>
+        </section>
+
+        <!-- statistics -->
+        <section class="stats">
+            <div class="stat-card">
+                <h3>
+                    Current Board
+                </h3>
+                <p id="current-board">
+                    8 × 8 Chessboard
+                </p>
+            </div>
+
+            <div class="stat-card">
+                <h3>
+                    Selected Square
+                </h3>
+                <p id="selected-square">
+                    —
+                </p>
+            </div>
+        </section>
+
+        <!-- main content -->
+        <section class="content">
+            <!-- chessboard -->
+            <section class="board-section">
+                <div class="board-container">
+                    <div
+                        id="chessboard"
+                        class="chessboard"
+                        aria-label="Chessboard"
+                    ></div>
+                </div>
+            </section>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="how-to-use">
+                    <h3>
+                        How to Use
+                    </h3>
+                    <p>
+                        Click on any square to highlight all possible bishop
+                        moves from that position.
+                    </p>
+                </div>
+
+                <div class="legend">
+                    <h3>
+                        Legend
+                    </h3>
+                    <ul>
+                        <li>
+                            Selected Square
+                        </li>
+                        <li>
+                            Possible Moves
+                        </li>
+                        <li>
+                            Not Reachable
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
