@@ -1,0 +1,105 @@
+/* for large tablets */
+@media (max-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .board-container {
+        min-height: auto;
+    }
+}
+
+/* for mobile devices */
+@media (max-width: 768px) {
+    .app {
+        width: min(100% - 24px, 1200px);
+        margin: var(--space-lg) auto;
+    }
+    .header {
+        align-items: flex-start;
+    }
+    .logo {
+        width: 48px;
+        height: 48px;
+        font-size: 1.7rem;
+    }
+    .title {
+        font-size: 1.75rem;
+    }
+    .controls {
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+    .board-size {
+        width: 100%;
+        min-width: 0;
+    }
+    .controls button {
+        flex: 1;
+    }
+    .stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+    .board-container {
+        padding: var(--space-md);
+    }
+    .sidebar {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* small mobile devices */
+@media (max-width: 480px) {
+    .app {
+        width: min(100% - 16px, 1200px);
+        margin: var(--space-md) auto;
+    }
+    .header {
+        gap: 12px;
+    }
+    .logo {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-sm);
+        font-size: 1.5rem;
+    }
+    .title {
+        font-size: 1.5rem;
+    }
+    .description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    .controls {
+        padding: var(--space-sm);
+    }
+    .controls button {
+        width: 100%;
+        flex: none;
+    }
+    .stat-card {
+        padding: var(--space-sm);
+    }
+    .stat-card p {
+        font-size: 1.1rem;
+    }
+    .board-container {
+        padding: 10px;
+        border-radius: var(--radius-md);
+    }
+    .content {
+        gap: var(--space-md);
+    }
+    .how-to-use,
+    .legend {
+        padding: var(--space-sm);
+        border-radius: var(--radius-md);
+    }
+    .square:hover {
+        transform: none;
+    }
+}

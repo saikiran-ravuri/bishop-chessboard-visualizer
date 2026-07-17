@@ -1,0 +1,269 @@
+/* css variables */
+:root {
+    /* colors */
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-success: #22c55e;
+    --color-background: #f8fafc;
+    --color-surface: #ffffff;
+    --color-text: #111827;
+    --color-text-secondary: #6b7280;
+    --color-border: #e5e7eb;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+
+    /* Spacing */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+}
+
+/* base styles */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+/* application layout */
+.app {
+    width: min(1200px, calc(100% - 32px));
+    margin: var(--space-xl) auto;
+}
+
+/* header */
+/* ==========================================
+   Header
+========================================== */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+.logo {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    font-size: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+.header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.title {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+}
+.description {
+    max-width: 650px;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* controls */
+.controls {
+    display: flex;
+    align-items: end;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+.board-size {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    min-width: 180px;
+}
+.board-size label {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+.board-size input {
+    width: 100%;
+    height: 46px;
+    padding: 0 var(--space-sm);
+    color: var(--color-text);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+.board-size input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+.controls button {
+    height: 46px;
+    padding: 0 var(--space-md);
+    border-radius: var(--radius-sm);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+#generate-board {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+#generate-board:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+}
+#reset-board {
+    color: var(--color-text);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+}
+#reset-board:hover {
+    background-color: #eef2f7;
+    transform: translateY(-1px);
+}
+.controls button:active {
+    transform: translateY(0);
+}
+
+/* statistics section */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+.stat-card {
+    padding: var(--space-md);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+.stat-card h3 {
+    margin-bottom: var(--space-xs);
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.stat-card p {
+    color: var(--color-text);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* main content layout */
+.content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: var(--space-lg);
+    align-items: start;
+}
+.board-section {
+    min-width: 0;
+}
+.board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+    padding: var(--space-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* side bar cards */
+.how-to-use,
+.legend {
+    padding: var(--space-md);
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+}
+.how-to-use h3,
+.legend h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 700;
+}
+.how-to-use p {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+}
+.legend ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+.legend li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+.legend li::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+}
+.legend li:nth-child(1)::before {
+    background-color: var(--color-primary);
+}
+.legend li:nth-child(2)::before {
+    background-color: var(--color-success);
+}
+.legend li:nth-child(3)::before {
+    background-color: var(--color-background);
+}
+
