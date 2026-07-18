@@ -301,6 +301,14 @@ body {
 }
 
 /* chess board states */
+.selected-square {
+    outline: 4px solid #f5c542;
+    outline-offset: -4px;
+}
+
+.highlight-square {
+    background-color: #f9e79f;
+}
 .square.selected {
     position: relative;
     z-index: 2;
