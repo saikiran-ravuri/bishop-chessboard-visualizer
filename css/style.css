@@ -267,3 +267,87 @@ body {
     background-color: var(--color-background);
 }
 
+/* chess board */
+.chessboard {
+    display: grid;
+    width: min(100%, 600px);
+    aspect-ratio: 1;
+    border: 2px solid var(--color-text);
+    overflow: hidden;
+    user-select: none;
+}
+
+/* chess board squares*/
+.square {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+.square:hover {
+    position: relative;
+    z-index: 1;
+    transform: scale(1.04);
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.45);
+}
+.square-light {
+    background-color: #f1f5f9;
+}
+.square-dark {
+    background-color: #64748b;
+}
+
+/* chess board states */
+.square.selected {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    box-shadow:
+        inset 0 0 0 3px rgba(255, 255, 255, 0.7),
+        0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+.square.possible-move {
+    position: relative;
+}
+.square.possible-move::after {
+    content: "";
+    width: 28%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--color-success);
+    box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.16);
+}
+.square.not-reachable {
+    opacity: 0.55;
+}
+.square .bishop-icon {
+    font-size: clamp(1.4rem, 4vw, 2.8rem);
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* accessibility and interaction polish */
+button:focus-visible,
+input:focus-visible,
+.square:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline-offset: 3px;
+}
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
