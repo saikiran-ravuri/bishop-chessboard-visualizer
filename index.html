@@ -1,140 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+
     <meta
         name="description"
-        content="Generate a dynamic chessboard and visualize bishop moves."
+        content="Generate a custom chessboard and visualize every valid bishop move interactively."
     >
 
     <title>Bishop Chessboard Visualizer</title>
 
-    <!-- Google Fonts -->
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- css -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
+
+    <!-- application -->
     <main class="app">
 
         <!-- header -->
         <header class="header">
-            <div class="logo">
+
+            <!-- logo -->
+            <div
+                class="logo"
+                aria-hidden="true"
+            >
                 ♗
             </div>
+
+            <!-- header content -->
             <div class="header-content">
                 <h1 class="title">
                     Bishop Chessboard Visualizer
                 </h1>
+
                 <p class="description">
-                    Generate an N × N chessboard and explore all possible bishop
-                    moves.
+                    Generate a custom chessboard, select any square, and instantly
+                    visualize every valid bishop move.
                 </p>
             </div>
         </header>
 
         <!-- controls -->
-        <section class="controls">
+        <section
+            class="controls"
+            aria-label="Chessboard controls"
+        >
+
+            <!-- board size input -->
             <div class="board-size">
                 <label for="board-size-input">
                     Board Size
                 </label>
+
                 <input
                     type="number"
                     id="board-size-input"
+                    name="board-size"
                     value="8"
                     min="4"
-                    max="12"
+                    max="16"
+                    step="1"
+                    inputmode="numeric"
+                    aria-describedby="board-size-hint"
                 >
+
+                <small id="board-size-hint">
+                    Choose a size from 4 to 16.
+                </small>
             </div>
 
-            <button type="button" id="generate-board">
+            <!-- generate button -->
+            <button
+                type="button"
+                id="generate-board"
+            >
                 Generate Board
             </button>
-            <button type="button" id="reset-board">
+
+            <!-- reset button -->
+            <button
+                type="button"
+                id="reset-board"
+            >
                 Reset
             </button>
         </section>
 
-        <!-- statistics -->
-        <section class="stats">
-            <div class="stat-card">
-                <h3>
-                    Current Board
-                </h3>
-                <p id="current-board">
-                    8 × 8 Chessboard
-                </p>
+        <!-- information -->
+        <section
+            class="stats"
+            aria-label="Board information"
+        >
+
+            <!-- current board size -->
+            <div class="info-chip">
+                <span>Board</span>
+
+                <strong
+                    id="current-board"
+                    aria-live="polite"
+                >
+                    8 × 8
+                </strong>
             </div>
 
-            <div class="stat-card">
-                <h3>
-                    Selected Square
-                </h3>
-                <p id="selected-square">
+            <!-- selected square -->
+            <div class="info-chip">
+                <span>Selected</span>
+
+                <strong
+                    id="selected-square"
+                    aria-live="polite"
+                >
                     —
-                </p>
+                </strong>
+            </div>
+
+            <!-- possible moves -->
+            <div class="info-chip">
+                <span>Moves</span>
+
+                <strong
+                    id="possible-moves"
+                    aria-live="polite"
+                >
+                    0
+                </strong>
             </div>
         </section>
 
-        <!-- main content -->
-        <section class="content">
-            <!-- chessboard -->
-            <section class="board-section">
-                <div class="board-container">
-                    <div
-                        id="chessboard"
-                        class="chessboard"
-                        aria-label="Chessboard"
-                    ></div>
-                </div>
-            </section>
-
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <div class="how-to-use">
-                    <h3>
-                        How to Use
-                    </h3>
-                    <p>
-                        Click on any square to highlight all possible bishop
-                        moves from that position.
-                    </p>
-                </div>
-
-                <div class="legend">
-                    <h3>
-                        Legend
-                    </h3>
-                    <ul>
-                        <li>
-                            Selected Square
-                        </li>
-                        <li>
-                            Possible Moves
-                        </li>
-                        <li>
-                            Not Reachable
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-
+        <!-- chess board -->
+        <section
+            class="board-section"
+            aria-label="Bishop move visualizer"
+        >
+            <div class="board-container">
+                <div
+                    id="chessboard"
+                    class="chessboard"
+                    role="grid"
+                    aria-label="Interactive bishop chessboard"
+                ></div>
+            </div>
         </section>
-
     </main>
 
-    <script src="script.js"></script>
+    <!-- javascript -->
+    <script
+        src="script.js"
+        defer
+    ></script>
 
 </body>
+
 </html>

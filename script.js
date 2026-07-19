@@ -1,11 +1,17 @@
 // dom definitions
 const chessboard = document.querySelector("#chessboard");
+
 const boardSizeInput = document.querySelector("#board-size-input");
+boardSizeInput.min = 4;
+boardSizeInput.max = 16;
+
 const generateBoardButton = document.querySelector("#generate-board");
 const resetBoardButton = document.querySelector("#reset-board");
 
 const currentBoardText = document.querySelector("#current-board");
 const selectedSquareText = document.querySelector("#selected-square");
+
+const possibleMovesText = document.querySelector("#possible-moves");
 
 // application state
 let boardSize = 8;
@@ -16,7 +22,18 @@ let possibleMoves = [];
 function generateBoard(){
     boardSize = Number(boardSizeInput.value);
 
+    if (!Number.isInteger(boardSize) || boardSize < 4 || boardSize > 16) {
+        alert("Enter a board size between 4 and 16.");
+        return;
+    }
+
     currentBoardText.textContent = `${boardSize} × ${boardSize}`;
+
+    selectedSquare = null;
+    possibleMoves = [];
+
+    selectedSquareText.textContent = "-";
+    possibleMovesText.textContent = "0";
 
     chessboard.innerHTML = "";
     chessboard.style.gridTemplateColumns = `repeat(${boardSize}, 1fr)`;
@@ -71,6 +88,8 @@ function handleSquareClick(event){
 
     selectedSquare.classList.add("selected-square");
 
+    possibleMoves = [];
+
     // top-left
     let currentRow = row - 1;
     let currentColumn =column -1;
@@ -80,6 +99,8 @@ function handleSquareClick(event){
         );
 
         diagonalSquare.classList.add("highlight-square");
+        possibleMoves.push(diagonalSquare);
+
         currentRow--;
         currentColumn--;
     }
@@ -93,6 +114,8 @@ function handleSquareClick(event){
         );
 
         diagonalSquare.classList.add("highlight-square");
+        possibleMoves.push(diagonalSquare);
+
         currentRow--;
         currentColumn++;
     }
@@ -106,6 +129,8 @@ function handleSquareClick(event){
         );
 
         diagonalSquare.classList.add("highlight-square");
+        possibleMoves.push(diagonalSquare);
+
         currentRow++;
         currentColumn--;
     }
@@ -119,9 +144,12 @@ function handleSquareClick(event){
         );
 
         diagonalSquare.classList.add("highlight-square");
+        possibleMoves.push(diagonalSquare);
+
         currentRow++;
         currentColumn++;
     }
+    possibleMovesText.textContent = possibleMoves.length;
 }
 
 // reset board function
@@ -137,10 +165,18 @@ function resetBoard() {
     selectedSquare = null;
     possibleMoves = [];
     selectedSquareText.textContent = "-";
+    possibleMovesText.textContent = "0";
 }
 
 // event listeners
 generateBoardButton.addEventListener("click", generateBoard);
+
+boardSizeInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        generateBoard();
+    }
+});
+
 resetBoardButton.addEventListener("click", resetBoard);
 
 generateBoard();

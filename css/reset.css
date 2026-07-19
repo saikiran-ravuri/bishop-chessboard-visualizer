@@ -1,4 +1,4 @@
-/* Remove default spacing & use border-box sizing */
+/* remove default spacing and use border-box sizing */
 *,
 *::before,
 *::after {
@@ -7,15 +7,9 @@
     box-sizing: border-box;
 }
 
-/* root elements */
-
+/* root element */
 html {
     scroll-behavior: smooth;
-}
-body {
-    min-height: 100vh;
-    line-height: 1.5;
-    text-rendering: optimizeLegibility;
 }
 
 /* typography */
@@ -41,7 +35,7 @@ a {
     text-decoration: none;
 }
 
-/* images */
+/* media */
 img,
 picture,
 svg,
@@ -49,6 +43,7 @@ video,
 canvas {
     display: block;
     max-width: 100%;
+    height: auto;
 }
 
 /* form elements */
@@ -57,10 +52,11 @@ button,
 textarea,
 select {
     font: inherit;
-    border: none;
-    outline: none;
+    color: inherit;
     background: none;
+    border: none;
 }
+
 button {
     cursor: pointer;
 }
